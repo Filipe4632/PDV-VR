@@ -1,0 +1,107 @@
+
+=====================================================PREPARANDO O WINDOWS==================================================
+
+1) Desativar Firewall do WINDOWS
+
+
+2) Abrir cmd como administrador e executar o comando: 
+
+     bcdedit /set loadoptions DDISABLE_INTEGRITY_CHECKS 
+
+     (esse comando desabilita a obrigação do driver ser assinado digitalmente)    
+
+
+3) Configurações de energia -> ativar altodesempenho, nunca desligar vídeo e nunca suspender atividade do computador. 
+
+
+4) Alterar configurações de energia avançadas ->  em "disco ridigo >> desligar disco rígido após" colocar 0 (zero) para nunca suspender o disco rígido.
+
+
+5) na caixa de pesquisa digitar: UAC >>> Configuração de controle de conta de usuário: nunca notificar
+
+
+===================================================INSTALANDO O PDV========================================================
+
+
+1) acessar IP do servidor >> vr >> exec >> VrSetupPdv + VrPdv.jar (copiar e colar na area de trabalho) apos o termino não esquecer de deletar pois,
+   corre o risco do cliente executar por engano.
+
+
+2) instalar VrSetupPdv e desinstalar UltraVNC
+
+
+3) Copiar os arquivos do servidor para o PDV
+
+	- Copie o aplicativo VRPdv.jar do diretório: "IP.DO.SERVIDOR"/vr/exec e cole no diretório: C:/pdv/exec.
+	- Copie a pasta lib do diretório: "IP.DO.SERVIDOR"/vr/exec/lib e cole no diretório: C:/pdv/exec. Peça para substituir todos os arquivos.
+	
+
+
+4) Instalar integrador fiscal, abrir o integrador, configurar de acordo com o CNPJ e Inscrição Estadual fornecidas pelo cliente, apontar o caminho do VRPdv em "file" e repetir "VRPdv" logo abaixo e salvar.
+
+
+5) Instalar driver Sefaz MFE (caso necessário instalar também driver do proprio aparelho MFE conforme a marca tanca/elgin/gertec)
+
+
+6) Criar pasta "mfe" dentro da pasta C:\PDV, Ir até Arquivos de programas >> SEFAZ >> biblioteca de funções >> copiar mfe.dll e colar dentro da pasta mfe criada em C:\PDV. Renomear a "mfe.dll" que você acabou de colar na pasta mfe e colocar o nome apenas como "mfe" e colar novamente a mfe.dll na pasta para que os dois arquivos fiquem lá.
+
+
+7) Clicar com o botão direito em cada um dos dois arquivos acima (mfe e mfe.dll) e dar permissão de controle total a TODOS; ir na pasta system32 ou  sysWOW64, procurar por "clisitef" e dar permissão de controle total a todos também.
+
+8) Caso MFe ja esteja ativado, prosseguir para configuração do PDV, caso não esteja seguir o passo 9.
+
+9) Download ativador tanca plus >> marcar opção "DLL", consultar, se aparecer na cor verde MFE EM OPERAÇÃO então agora é só ativar o MFE (a senha é 123456789) e depois "associar ao aplicativo comercial" usando a mesma senha.
+
+10) Acessar IP do servidor >> vr >> exec >> Executar VRConcentrador >> Sistema >> Exportar Banco. (exporte o banco para a area de trabalho e depois cole o banco gerado dentro da pasta C:\PDV\DATABASE)
+
+
+
+
+
+
+
+====================================================CONFIGURANDO VRPdv=====================================================
+
+11) Só configuraremos as abas "concentrador" e "comunicação" neste tutorial, pois as outras "pinpad" "balança" etc depende se o cliente usa ou não esses recursos.
+
+
+12) Na aba "concentrador" colocar o IP do servidor e a porta 3231, logo em seguida em "caminho do servidor" colocar o IP do servidor novamente só que com "/vr" no final, exemplo: 192.168.x.x/vr.
+
+
+13) Na aba "comunicação" selecionar MFE na opção "tipo"
+
+
+14) Tipo de impressão >> REDE; 
+    Nº ECF >> perguntar ao cliente o número da ECF e colocar nesse campo;
+    Endereço >> 127.0.0.1/NOME DE COMPARTILHAMENTO DA IMPRESSORA; 
+    Tipo Comando Gaveta >> GENERICA; 
+    Tipo Comando Guilhotina >> GENERICA PARCIAL; 
+    Espaçamento entre linhas >> REDUZIDO; 
+    Tamanho da Fonte >> NORMAL
+
+
+15) Configuração da Aba MFE no VRPdv:   
+           
+    Modelo: De acordo com o modelo do MFE
+    Código de Ativação: 123456789 (o mesmo usado na ativação do MFe)                                       
+    Comunicação Direta: MARCAR ESSA OPÇÃO.
+    Diretório Inpout: colocar caminho do diretório Input, geralmente fica em C:\Integrador\Input
+    Duretório Output: colocar caminho do diretório Output, geralmente fica em C:\Integrador\Output   
+    Chave de acesso do validador:
+
+    25CFE38D-3B92-46C0-91CA-CFF751A82D3D
+
+    (essa chave é padrão, será sempre a mesma)
+
+    Assinatura AC: Será necessário consultar na Sefaz, copiar o código que aparecerá lá e colar nesse campo.
+
+    Salvar.
+
+
+    Boa sorte!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
